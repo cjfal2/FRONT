@@ -1,7 +1,7 @@
 import DiaryItem from "./DiaryItem"
 
 
-const DiaryList = ({ diaryList }) => {
+const DiaryList = ({ onDelete, diaryList }) => {
   // 프롭스를 잘못내리면 에러가 난다. -> 디폴트 프롭스 설정
   console.log(diaryList)
   return (
@@ -11,7 +11,8 @@ const DiaryList = ({ diaryList }) => {
       <div>
         {/* map으로 객체 요소를 하나씩 접근함 */}
         {diaryList.map((it) => (
-          <DiaryItem key={it.id} {...it}/>
+          // 새로받은 onDelete를 아이템에 내려준다
+          <DiaryItem key={it.id} {...it} onDelete={onDelete} />
         ))}
       </div>
     </div>

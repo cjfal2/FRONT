@@ -1,7 +1,8 @@
 import './App.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import DiaryEditor from './DiaryEditor';
 import DiaryList from './DiaryList';
+
 // import LifeCycle from './LifeCycle';
 
 // https://jsonplaceholder.typicode.com/comments
@@ -35,9 +36,6 @@ function App() {
     getData()
   }, [])
 
-
-
-
   // 파라미터를 받는 함수를 생성
   const onCreate = (author, content, emotion) => {
     const created_date = new Date().getTime()
@@ -68,12 +66,28 @@ function App() {
     )
   }
 
+  // 일기 분석
+  // useMemo주의 : 콜백함수가 리턴하는 값을 리턴 -> 함수가 아니고 값이 됨
+  const getDiaryAnalysis = useMemo(() => {
+    console.log("일기 분석 시작")
 
+    const goodCount = data.filter((it) => it.emotion >= 3).length
+    const badCount = data.length - goodCount
+    const goodRatio = (goodCount / data.length) * 100
+    return {goodCount, badCount, goodRatio}
+  }, [data.length]) // data.length 가 변화할 때만 useMemo 시행
+  // 호출 한번 해줌
+  const {goodCount, badCount, goodRatio} = getDiaryAnalysis
 
   return (
     <div className="App">
       {/* <LifeCycle /> */}
       <DiaryEditor onCreate={onCreate} />
+      <div>전체 일기 : {data.length}</div>
+      <div>기분 좋은 일기 개수 : {goodCount}</div>
+      <div>기분 나쁜 일기 개수 : {badCount}</div>
+      <div>기분 좋은 일기 비율 : {goodRatio}%</div>
+
       {/* DiaryList에 onRemove도 프롭스로 보냄 */}
       <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
       {/* 프롭으로 보냄 */}

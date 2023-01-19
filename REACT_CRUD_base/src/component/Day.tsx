@@ -1,21 +1,25 @@
 // import dummy from "../db/data.json"
 // 다이나믹 url을 위해서
 import { useParams } from "react-router-dom"
-import Word from "./Word"
+import Word, { IWord } from "./Word"
 // import { useEffect, useState } from "react"
 import useFetch from "../hooks/useFetch"
+import React from "react"
+
+
 
 
 export default function Day() {
-
-  const { day } = useParams()
+  // <> 는 어떤 타입을 사용할지를 위해 사용가능
+  const { day } = useParams<{ day: string }>()
   // // == const day = useParams().day
   // const wordList = dummy.words.filter(word => (
   //   Number(word.day) === Number(day)
   //   // 받아오는 데이터의 타입을 확인해주어야 함
   // ))
 
-  const words = useFetch(`http://localhost:3001/words?day=${day}`)
+  // 타입스크립트, 다른 컴포넌트에서 불러오기
+  const words : IWord[] = useFetch(`http://localhost:3001/words?day=${day}`)
 
 
   // const [words, setWords] = useState([])

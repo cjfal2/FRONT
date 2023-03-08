@@ -17,16 +17,39 @@ class MyApp extends StatelessWidget {
         // )
         home: Scaffold(
       appBar: AppBar(
-        title: Text("앱바"),
-        leading: Icon(Icons.api),
-        actions: [Icon(Icons.star), Icon(Icons.message)], // 우측 아이콘들
-        backgroundColor: Color.fromARGB(255, 79, 202, 255),
+        title:
+            Text("역삼동", style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon:
+                Icon(Icons.notifications, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+        ],
+        backgroundColor: Color.fromARGB(255, 238, 238, 238),
       ),
-      body: SizedBox(
-          child: IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.adb_sharp, color: Color.fromARGB(255, 249, 110, 110)),
-      )),
+      body: Row(
+        children: [
+          Flexible(
+              flex: 3,
+              child: Container(
+                color: Color.fromRGBO(255, 61, 61, 0),
+              )),
+          Flexible(
+              flex: 7,
+              child: Container(
+                color: Color.fromRGBO(42, 223, 255, 0),
+              )),
+        ],
+      ),
     ));
   }
 }

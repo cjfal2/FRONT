@@ -56,14 +56,18 @@ class MyApp extends StatelessWidget {
               ),
               Text(
                 'Total Balance',
-                style: TextStyle(fontSize: 22, color: Colors.white.withOpacity(0.8)),
+                style: TextStyle(
+                    fontSize: 22, color: Colors.white.withOpacity(0.8)),
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
                 '\$5 194 482',
-                style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 44,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               SizedBox(
                 height: 30,
@@ -72,17 +76,93 @@ class MyApp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
-                    bgColor: Color(0xffe2b33a),
-                    text: "Transfer",
-                    textColor: Colors.black
-                  ),
+                      bgColor: Color(0xffe2b33a),
+                      text: "Transfer",
+                      textColor: Colors.black),
                   Button(
-                    bgColor: Color.fromARGB(255, 36, 36, 36),
-                    text: "Request",
-                    textColor: Colors.white
+                      bgColor: Color.fromARGB(255, 36, 36, 36),
+                      text: "Request",
+                      textColor: Colors.white),
+                ],
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end, // 수직축 가운데 정렬
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, // 떨어뜨리기
+                children: [
+                  Text(
+                    "Wallets",
+                    style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  ),
+                  Text(
+                    "View All",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white.withOpacity(0.8),
+                    ),
                   ),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              // 카드부분
+              Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff1f2123),
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 20,
+                  ),
+                  // == padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Euro",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '6 428',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              SizedBox(width: 5,),
+                              Text(
+                                'EUR',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

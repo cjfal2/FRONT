@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:nomad1/widgets/button.dart';
+import 'package:nomad1/widgets/button_normal.dart';
 import 'package:nomad1/widgets/currency_card.dart';
 
 void main() {
@@ -79,12 +79,12 @@ class MyApp extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    Button(
+                    ButtonNormal(
                       text: 'Transfer',
                       bgColor: Color(0xFFF1B33B),
                       textColor: Colors.black,
                     ),
-                    Button(
+                    ButtonNormal(
                       text: 'Request',
                       bgColor: Color(0xFF1F2123),
                       textColor: Colors.white,
@@ -119,30 +119,30 @@ class MyApp extends StatelessWidget {
                   height: 20,
                 ),
                 CurrenyCard(
-                    name: "Euro",
-                    code: "EUR",
-                    amount: "6 428",
-                    icon: Icons.euro_rounded,
-                    isInverted: false,
+                  name: "Euro",
+                  code: "EUR",
+                  amount: "6 428",
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
                 ),
                 Transform.translate(
                   offset: Offset(0, -20),
                   child: CurrenyCard(
-                      name: "Bitcoin",
-                      code: "BTC",
-                      amount: "9 785",
-                      icon: Icons.currency_bitcoin,
-                      isInverted: true,
+                    name: "Bitcoin",
+                    code: "BTC",
+                    amount: "9 785",
+                    icon: Icons.currency_bitcoin,
+                    isInverted: true,
                   ),
                 ),
                 Transform.translate(
                   offset: Offset(0, -40),
                   child: CurrenyCard(
-                      name: "Dollar",
-                      code: "USD",
-                      amount: "428",
-                      icon: Icons.attach_money_rounded,
-                      isInverted: false,
+                    name: "Dollar",
+                    code: "USD",
+                    amount: "428",
+                    icon: Icons.attach_money_rounded,
+                    isInverted: false,
                   ),
                 ),
               ],

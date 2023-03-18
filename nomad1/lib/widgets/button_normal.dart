@@ -1,13 +1,13 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
+class ButtonNormal extends StatelessWidget {
   final String text;
   final Color bgColor;
   final Color textColor;
 
-  const Button({
+  const ButtonNormal({
     Key? key,
     required this.text,
     required this.bgColor,
@@ -18,8 +18,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(45)),
+            color: bgColor, borderRadius: BorderRadius.circular(45)),
         child: Padding(
           padding: EdgeInsets.symmetric(
             vertical: 20,

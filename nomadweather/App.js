@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import * as Location from "expo-location";
+import { Ionicons, Fontisto } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -13,6 +14,15 @@ import {
 // 화면의 크기를 가져오는 코드
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const API_KEY = "";
+const icons = {
+  Clear: "day-sunny",
+  Clouds: "cloudy",
+  Rain: "rain",
+  Atmosphere: "cloudy-gusts",
+  Snow: "snow",
+  Drizzle: "day-rain",
+  Thunderstorm: "lightning",
+};
 
 export default function App() {
   const [city, setCity] = useState("Loading...");
@@ -56,7 +66,7 @@ export default function App() {
         showsHorizontalScrollIndicator={false}
       >
         {days.length === 0 ? (
-          <View style={styles.day}>
+          <View style={{ ...styles.day, alignItems:"center" }}>
             <ActivityIndicator
               color={"white"}
               size={"large"}
@@ -64,13 +74,31 @@ export default function App() {
             />
           </View>
         ) : (
-          days.map((day, index) =>
-          
-          <View key={index} style={styles.day}>
-            <Text style={styles.temp}>{parseFloat(day.temp.day).toFixed(1)}</Text>
-            <Text style={styles.main}>{day.weather[0].main}</Text>
-            <Text style={styles.description}>{day.weather[0].description}</Text>
-          </View>)
+          days.map((day, index) => (
+            <View key={index} style={styles.day}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <Text style={styles.temp}>
+                  {parseFloat(day.temp.day).toFixed(1)}
+                </Text>
+                <Fontisto
+                  name={icons[day.weather[0].main]}
+                  size={68}
+                  color={"black"}
+                ></Fontisto>
+              </View>
+              <Text style={styles.main}>{day.weather[0].main}</Text>
+              <Text style={styles.description}>
+                {day.weather[0].description}
+              </Text>
+            </View>
+          ))
         )}
       </ScrollView>
     </View>
@@ -102,10 +130,16 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   main: {
-    marginTop: -30,
+    width: "100%",
+    textAlign: "left",
+    paddingLeft: 20,
+    marginTop: -20,
     fontSize: 50,
   },
   description: {
+    width: "100%",
+    textAlign: "left",
+    paddingLeft: 25,
     fontSize: 20,
   },
 });
